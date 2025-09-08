@@ -52,6 +52,7 @@
   box-shadow: 0 0px 6px rgba(103, 194, 58, 0.7);
   font-size: 18px;
   padding: 15px 30px !important;
+
   .button__icon {
     margin-right: 5px;
   }
@@ -61,29 +62,16 @@
   <div class="c-login-page">
     <div v-if="loading" class="c-loading o-loading" />
     <div class="c-login-page__inner" v-else>
-      <div class="c-login__text">Welcome to Starflare</div>
+      <div class="c-login__text">Welcome to Gitstars</div>
       <div class="c-login__text--sm">
         Help you manage your github star simply and efficiently
       </div>
-      <button
-        @click="openOauth"
-        class="c-login-button o-button--success is-round"
-      >
+      <button @click="openOauth" class="c-login-button o-button--success is-round">
         <SvgIcon icon="github-fill" class="button__icon" />Sign in with GitHub
       </button>
 
-      <img
-        v-if="appTheme === 'light'"
-        src="../assets/img/light.png"
-        class="demo-img"
-        alt="github-logo"
-      />
-      <img
-        v-else
-        src="../assets/img/dark.png"
-        class="demo-img"
-        alt="github-logo"
-      />
+      <img v-if="appTheme === 'light'" src="../assets/img/light.png" class="demo-img" alt="github-logo" />
+      <img v-else src="../assets/img/dark.png" class="demo-img" alt="github-logo" />
     </div>
   </div>
 </template>

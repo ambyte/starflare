@@ -56,7 +56,7 @@ module.exports = {
       manifestTransforms: [addCdnFilesToPwaPrecache]
     },
     // https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa#configuration
-    name: 'Starflare',
+    name: 'Gitstars',
     themeColor: '#141419',
     msTileColor: '#141419',
     background_color: '#141419',
