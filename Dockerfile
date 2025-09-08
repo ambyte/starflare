@@ -4,6 +4,14 @@ FROM node:16-alpine as builder
 # Set working directory
 WORKDIR /app
 
+# Build arguments for environment variables
+ARG VUE_APP_CLIENT_ID
+ARG VUE_APP_API_BASE_URL
+
+# Set environment variables for Vue build
+ENV VUE_APP_CLIENT_ID=$VUE_APP_CLIENT_ID
+ENV VUE_APP_API_BASE_URL=$VUE_APP_API_BASE_URL
+
 # Copy package files
 COPY package.json yarn.lock ./
 
@@ -13,7 +21,7 @@ RUN yarn install --frozen-lockfile
 # Copy source code
 COPY . .
 
-# Build the application
+# Build the application with environment variables
 RUN yarn build
 
 # Production stage with nginx

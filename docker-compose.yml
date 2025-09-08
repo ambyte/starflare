@@ -6,11 +6,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VUE_APP_CLIENT_ID: ${VUE_APP_CLIENT_ID:-your_github_client_id}
+        VUE_APP_API_BASE_URL: ${VUE_APP_API_BASE_URL:-http://localhost:7001}
     ports:
       - '3222:80'
     environment:
       - NODE_ENV=production
-      - VUE_APP_CLIENT_ID=${VUE_APP_CLIENT_ID:-your_github_client_id}
     networks:
       - starflare-network
     restart: unless-stopped

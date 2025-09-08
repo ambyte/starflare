@@ -104,8 +104,17 @@ export default {
   },
   methods: {
     openOauth() {
+      // Fallback для client_id если переменная окружения недоступна
+      const clientId = process.env.VUE_APP_CLIENT_ID || window.VUE_APP_CLIENT_ID || 'your_github_client_id'
+
+      if (!clientId || clientId === 'your_github_client_id') {
+        console.error('GitHub Client ID не настроен! Проверьте переменную VUE_APP_CLIENT_ID')
+        this.$message.error('GitHub Client ID не настроен!')
+        return
+      }
+
       const params = {
-        client_id: process.env.VUE_APP_CLIENT_ID,
+        client_id: clientId,
         redirect_uri: location.origin + '#/login'
       }
       const base = 'https://github.com/login/oauth/authorize?'
